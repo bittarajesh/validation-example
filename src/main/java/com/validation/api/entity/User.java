@@ -10,8 +10,9 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "USERS_TBL")
-
-
+//@Data
+//@AllArgsConstructor(staticName = "build")
+//@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue

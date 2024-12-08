@@ -5,6 +5,7 @@ import lombok.*;
 
 @Data
 @AllArgsConstructor
+//@AllArgsConstructor(staticName = "build")
 @NoArgsConstructor
 @Getter
 @Setter
