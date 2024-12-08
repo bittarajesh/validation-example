@@ -2,9 +2,12 @@ package com.validation.api.service;
 
 import com.validation.api.dto.UserRequest;
 import com.validation.api.entity.User;
+import com.validation.api.exception.UserNotFoundException;
 import com.validation.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 
@@ -23,7 +26,12 @@ public class UserService {
         return repository.findAll();
     }
 
-    public User getUser(int id){
-        return repository.findByUserId(id);
+    public User getUser(int id) throws UserNotFoundException {
+        User user = repository.findByUserId(id);
+        if(!ObjectUtils.isEmpty(user)){
+            return user;
+        } else{
+            throw new UserNotFoundException("user not found with id:"+" "+id);
+        }
     }
 }
